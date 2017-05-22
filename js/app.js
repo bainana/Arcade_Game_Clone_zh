@@ -56,10 +56,10 @@ Play.prototype.update = function (dt) {
 Play.prototype.checkCollisions=function(){
     for(var i=0;i<allEnemies.length;i++){
         var EnemyWidth=68,EnemyHeight=98;//手动计算出敌人的宽度和高度
-        if(this.y>(allEnemies[i].y-EnemyHeight/2)&&this.y<(allEnemies[i].y+EnemyHeight/2)){
-            if(this.x>(allEnemies[i].x-EnemyWidth/2)&&this.x<(allEnemies[i].x+EnemyWidth/2)){
+        if(this.y>(allEnemies[i].y-EnemyHeight/2)&&this.y<(allEnemies[i].y+EnemyHeight/2)){//当玩家的y值大于敌人的y值减去玩家的一半宽度并且小于敌人的y值加上玩家的一半时
+            if(this.x>(allEnemies[i].x-EnemyWidth/2)&&this.x<(allEnemies[i].x+EnemyWidth/2)){//当玩家的x值大于敌人的x值减去玩家的一半宽度并且小于敌人的x值加上玩家的一半时
                 this.x=200;
-                this.y=390;
+                this.y=390;//恢复初始位置
             }
 
         }
