@@ -1,0 +1,17 @@
+{
+  "name": "arcade_game",
+  "version": "1.0.0",
+  "description": "Arcade Game Clone",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "udacity",
+    "Arcade",
+    "Game",
+    "Clone"
+  ],
+  "author": "bainana",
+  "license": "MIT"
+}
