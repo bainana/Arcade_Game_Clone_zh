@@ -44,7 +44,7 @@ Play.prototype.update = function (dt) {
     if(this.y<-12){
         if(flag==false){
            alert("Win!Play Again");
-        }
+    }
         flag=true;
         this.y=320;
     }
@@ -95,9 +95,9 @@ Play.prototype.handleInput = function (keywords) {
 }
 ;
 var allEnemies = [
-    // new Enemy(0, 55),
-    // new Enemy(100, 145),
-    // new Enemy(150, 235)
+    new Enemy(0, 55),
+    new Enemy(100, 145),
+    new Enemy(150, 235)
 ];
 var player = new Play(203, 320);
 // 现在实例化你的所有对象
