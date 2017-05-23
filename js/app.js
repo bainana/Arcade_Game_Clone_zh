@@ -2,7 +2,7 @@
 var Enemy = function (x, y) {
     this.x = x;
     this.y = y;
-    this.speed=100+Math.random()*300;
+    this.speed = 100 + Math.random() * 300;
     // 要应用到每个敌人的实例的变量写在这里
     // 我们已经提供了一个来帮助你实现更多
 
@@ -18,8 +18,8 @@ Enemy.prototype.update = function (dt) {
     // 都是以同样的速度运行的
 
     //Enemy到达终点后，回到起点
-    if(this.x>500){
-        this.x=-30;
+    if (this.x > 500) {
+        this.x = -30;
     }
 };
 
@@ -37,26 +37,26 @@ var Play = function (x, y) {
     this.sprite = 'images/char-boy.png';
 };
 Play.prototype.update = function (dt) {
-    var flag=false;
-    if(this.x<=-44){
-        this.x=6;
+    var flag = false;
+    if (this.x <= -44) {
+        this.x = 6;
     }
-    if(this.y<-12){
-        if(flag==false){
-           alert("Win!Play Again");
-    }
-        flag=true;
-        this.y=320;
+    if (this.y < -12) {
+        if (flag == false) {
+            alert("Win!Play Again");
+        }
+        flag = true;
+        this.y = 320;
     }
 };
 //手动计算出敌人的宽度和高度，判断在边界之内碰撞为条件。
-Play.prototype.checkCollisions=function(){
-    for(var i=0;i<allEnemies.length;i++){
-        var EnemyWidth=83,EnemyHeight=101;//手动计算出敌人的宽度和高度
-        if(this.y>(allEnemies[i].y-EnemyHeight/2)&&this.y<(allEnemies[i].y+EnemyHeight/2)){//当玩家的y值大于敌人的y值减去玩家的一半宽度并且小于敌人的y值加上玩家的一半时
-            if(this.x>(allEnemies[i].x-EnemyWidth/2)&&this.x<(allEnemies[i].x+EnemyWidth/2)){//当玩家的x值大于敌人的x值减去玩家的一半宽度并且小于敌人的x值加上玩家的一半时
-                this.x=200;
-                this.y=320;//恢复初始位置
+Play.prototype.checkCollisions = function () {
+    for (var i = 0; i < allEnemies.length; i++) {
+        var EnemyWidth = 83, EnemyHeight = 101;//手动计算出敌人的宽度和高度
+        if (this.y > (allEnemies[i].y - EnemyHeight / 2) && this.y < (allEnemies[i].y + EnemyHeight / 2)) {//当玩家的y值大于敌人的y值减去玩家的一半宽度并且小于敌人的y值加上玩家的一半时
+            if (this.x > (allEnemies[i].x - EnemyWidth / 2) && this.x < (allEnemies[i].x + EnemyWidth / 2)) {//当玩家的x值大于敌人的x值减去玩家的一半宽度并且小于敌人的x值加上玩家的一半时
+                this.x = 200;
+                this.y = 320;//恢复初始位置
             }
 
         }
@@ -68,16 +68,16 @@ Play.prototype.render = function () {
 Play.prototype.handleInput = function (keywords) {
     switch (keywords) {
         case 'left':
-        if(this.x<=1){
-            this.x+=0;
-        }else{
-           this.x -= 101;
-        }
+            if (this.x <= 1) {
+                this.x += 0;
+            } else {
+                this.x -= 101;
+            }
             break;
         case 'right':
-            if(this.x>=400){//当玩家到达右侧边界时不允许位置增加
-                this.x+=0;
-            }else{
+            if (this.x >= 400) {//当玩家到达右侧边界时不允许位置增加
+                this.x += 0;
+            } else {
                 this.x += 101;
             }
             break;
@@ -85,11 +85,11 @@ Play.prototype.handleInput = function (keywords) {
             this.y -= 83;
             break;
         case 'down':
-        if(this.y>=403){
-               this.y+=0;
-        }else{
-            this.y += 83;
-        }
+            if (this.y >= 403) {
+                this.y += 0;
+            } else {
+                this.y += 83;
+            }
             break;
     }
 }
