@@ -37,13 +37,9 @@ var Play = function (x, y) {
     this.sprite = 'images/char-boy.png';
 };
 Play.prototype.update = function (dt) {
-    console.log(this.x,this.y)
     var flag=false;
     if(this.x<=-44){
         this.x=6;
-    }
-    if(this.x>=500){
-
     }
     if(this.y<-12){
         if(flag==false){
