@@ -37,29 +37,30 @@ var Play = function (x, y) {
     this.sprite = 'images/char-boy.png';
 };
 Play.prototype.update = function (dt) {
+    console.log(this.x,this.y)
     var flag=false;
-    if(this.x<=-50||this.x>=500){
-        this.x=10
+    if(this.x<=-44){
+        this.x=6;
     }
-    if(this.y<-10){
+    if(this.x>=500){
+
+    }
+    if(this.y<-12){
         if(flag==false){
            alert("Win!Play Again");
         }
         flag=true;
-        this.y=390;
-    }
-    if(this.y>=430){
-        this.y=390
+        this.y=320;
     }
 };
 //手动计算出敌人的宽度和高度，判断在边界之内碰撞为条件。
 Play.prototype.checkCollisions=function(){
     for(var i=0;i<allEnemies.length;i++){
-        var EnemyWidth=68,EnemyHeight=98;//手动计算出敌人的宽度和高度
+        var EnemyWidth=83,EnemyHeight=101;//手动计算出敌人的宽度和高度
         if(this.y>(allEnemies[i].y-EnemyHeight/2)&&this.y<(allEnemies[i].y+EnemyHeight/2)){//当玩家的y值大于敌人的y值减去玩家的一半宽度并且小于敌人的y值加上玩家的一半时
             if(this.x>(allEnemies[i].x-EnemyWidth/2)&&this.x<(allEnemies[i].x+EnemyWidth/2)){//当玩家的x值大于敌人的x值减去玩家的一半宽度并且小于敌人的x值加上玩家的一半时
                 this.x=200;
-                this.y=390;//恢复初始位置
+                this.y=320;//恢复初始位置
             }
 
         }
@@ -71,26 +72,38 @@ Play.prototype.render = function () {
 Play.prototype.handleInput = function (keywords) {
     switch (keywords) {
         case 'left':
-            this.x -= 50;
+        if(this.x<=1){
+            this.x+=0;
+        }else{
+           this.x -= 101;
+        }
             break;
         case 'right':
-            this.x += 50;
+            if(this.x>=400){//当玩家到达右侧边界时不允许位置增加
+                this.x+=0;
+            }else{
+                this.x += 101;
+            }
             break;
         case 'up':
-            this.y -= 50;
+            this.y -= 83;
             break;
         case 'down':
-            this.y += 50;
+        if(this.y>=403){
+               this.y+=0;
+        }else{
+            this.y += 83;
+        }
             break;
     }
 }
 ;
 var allEnemies = [
-    new Enemy(0, 55),
-    new Enemy(100, 145),
-    new Enemy(150, 235)
+    // new Enemy(0, 55),
+    // new Enemy(100, 145),
+    // new Enemy(150, 235)
 ];
-var player = new Play(200, 390);
+var player = new Play(203, 320);
 // 现在实例化你的所有对象
 // 把所有敌人的对象都放进一个叫 allEnemies 的数组里面
 
