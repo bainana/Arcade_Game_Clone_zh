@@ -16,9 +16,9 @@ Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
     // 你应该给每一次的移动都乘以 dt 参数，以此来保证游戏在所有的电脑上
     // 都是以同样的速度运行的
-
+    console.log(ctx.canvas.width);
     //Enemy到达终点后，回到起点
-    if (this.x > 500) {
+    if (this.x > ctx.canvas.width) {
         this.x = -30;
     }
 };
@@ -38,9 +38,6 @@ var Play = function (x, y) {
 };
 Play.prototype.update = function (dt) {
     var flag = false;
-    if (this.x <= -44) {
-        this.x = 6;
-    }
     if (this.y < -12) {
         if (flag == false) {
             alert("Win!Play Again");
@@ -53,8 +50,8 @@ Play.prototype.update = function (dt) {
 Play.prototype.checkCollisions = function () {
     for (var i = 0; i < allEnemies.length; i++) {
         var EnemyWidth = 83, EnemyHeight = 101;//手动计算出敌人的宽度和高度
-        if (this.y > (allEnemies[i].y - EnemyHeight / 2) && this.y < (allEnemies[i].y + EnemyHeight / 2)) {//当玩家的y值大于敌人的y值减去玩家的一半宽度并且小于敌人的y值加上玩家的一半时
-            if (this.x > (allEnemies[i].x - EnemyWidth / 2) && this.x < (allEnemies[i].x + EnemyWidth / 2)) {//当玩家的x值大于敌人的x值减去玩家的一半宽度并且小于敌人的x值加上玩家的一半时
+        if (this.y > (allEnemies[i].y - EnemyHeight) && this.y < (allEnemies[i].y + EnemyHeight)) {//当玩家的y值大于敌人的y值减去玩家的一半宽度并且小于敌人的y值加上玩家的一半时
+            if (this.x > (allEnemies[i].x - EnemyWidth) && this.x < (allEnemies[i].x + EnemyWidth)) {//当玩家的x值大于敌人的x值减去玩家的一半宽度并且小于敌人的x值加上玩家的一半时
                 this.x = 200;
                 this.y = 320;//恢复初始位置
             }
