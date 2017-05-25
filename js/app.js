@@ -16,7 +16,6 @@ Enemy.prototype.update = function (dt) {
     this.x += this.speed * dt;
     // 你应该给每一次的移动都乘以 dt 参数，以此来保证游戏在所有的电脑上
     // 都是以同样的速度运行的
-    console.log(ctx.canvas.width);
     //Enemy到达终点后，回到起点
     if (this.x > ctx.canvas.width) {
         this.x = -30;
